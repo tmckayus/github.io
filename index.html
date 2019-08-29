@@ -1,15 +1,18 @@
 ---
 layout: default
-title: stuff I learned
 ---
 
-{% for ppost in paginator.posts %}
-<h2><a href="{{ ppost.url }}">{{ ppost.title }}</a></h2>
-{% if ppost.subtitle %}
-<h4>{{ ppost.subtitle }}</h4>
-{% endif %}
-<p class="meta">{{ ppost.date | date_to_string }}</p>
-<div class="post">
-{{ ppost.content }}
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post">
+
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
 </div>
-{% endfor %}
